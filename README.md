@@ -13,7 +13,8 @@
 ## Tech Stack
 React, TypeScript, Redux Toolkit, TailwindCSS, Next.js, MongoDB, Storybook, React Testing Library
 
-## Original MVP (code can be found [here](https://github.com/jespy2/storial "The original Storial!"))
+### Original MVP (code can be found [here](https://github.com/jespy2/storial "The original Storial!"))
+### 2.0 (code can be found [here](https://github.com/jespy2/storial-2.0 "Storial: The Next Generation! 🖖 "))
 This was for an assessment I did in 2021. The prompt was the following:
 
 > *Using the UI framework of your choice, build a UI around a hypothetical RESTful library API. Assume this API returns a list of books in a library, and allows for CRUD operations on a single book. The application should support those endpoints.*
