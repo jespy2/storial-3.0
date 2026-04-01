@@ -5,9 +5,9 @@ import { useDispatch } from "react-redux";
 
 import { Pill } from "@/components/ui/Pill/Pill";
 import { useAppSelector } from "@/hooks";
-import { AppDispatch } from "@/store";
-import { openAlert, openModal } from "@/store/slices";
-import { bookThunks } from "@/store/thunks";
+import { AppDispatch } from "@/lib/store";
+import { openAlert, openModal } from "@/lib/store/slices";
+import { bookThunks } from "@/lib/store/thunks";
 import { ModalType } from "@/types";
 
 export const TableBody = () => {

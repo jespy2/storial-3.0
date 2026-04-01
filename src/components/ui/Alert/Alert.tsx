@@ -2,9 +2,9 @@
 import { useDispatch } from "react-redux";
 import { ExclamationCircleIcon } from "@heroicons/react/24/solid";
 
-import { AppDispatch } from "@/store";
+import { AppDispatch } from "@/lib/store";
 import { useAppSelector } from "@/hooks";
-import { closeAlert, openNotification } from "@/store/slices";
+import { closeAlert, openNotification } from "@/lib/store/slices";
 
 export const Alert = () => {
 	const dispatch = useDispatch<AppDispatch>();

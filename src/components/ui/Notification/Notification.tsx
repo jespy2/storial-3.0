@@ -3,9 +3,9 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { ExclamationCircleIcon, XMarkIcon } from "@heroicons/react/24/solid";
 
-import { AppDispatch } from "@/store";
+import { AppDispatch } from "@/lib/store";
 import { useAppSelector } from "@/hooks";
-import { closeNotification } from "@/store/slices";
+import { closeNotification } from "@/lib/store/slices";
 
 export const Notification = () => {
 	const dispatch = useDispatch<AppDispatch>();

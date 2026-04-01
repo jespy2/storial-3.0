@@ -2,8 +2,8 @@
 import Image from "next/image";
 import { useDispatch } from "react-redux";
 
-import { AppDispatch } from "@/store";
-import { closeModal } from "@/store/slices";
+import { AppDispatch } from "@/lib/store";
+import { closeModal } from "@/lib/store/slices";
 import { XMarkIcon } from "@heroicons/react/24/solid";
 
 import { StorialLogo } from "@/images";

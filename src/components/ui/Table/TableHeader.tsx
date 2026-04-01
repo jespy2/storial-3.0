@@ -2,8 +2,8 @@
 import { useDispatch } from "react-redux";
 import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/solid";
 
-import { AppDispatch } from "@/store";
-import { bookSlice } from "@/store/slices";
+import { AppDispatch } from "@/lib/store";
+import { bookSlice } from "@/lib/store/slices";
 import { SortDirection, SortItem } from "@/types";
 import { useAppSelector } from "@/hooks";
 

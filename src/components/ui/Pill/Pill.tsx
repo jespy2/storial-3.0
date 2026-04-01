@@ -1,9 +1,9 @@
 "use client";
 import { useDispatch } from "react-redux";
 
-import { AppDispatch } from "@/store";
-import { openNotification } from "@/store/slices";
-import { bookThunks } from "@/store/thunks";
+import { AppDispatch } from "@/lib/store";
+import { openNotification } from "@/lib/store/slices";
+import { bookThunks } from "@/lib/store/thunks";
 import { IBook } from "@/types";
 
 export const Pill = ({ book }: { book: IBook }) => {

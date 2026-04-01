@@ -2,8 +2,8 @@
 import { useDispatch } from "react-redux";
 import { ArrowRightStartOnRectangleIcon } from "@heroicons/react/24/solid";
 
-import { AppDispatch } from "@/store";
-import { logoutUser } from "@/store/slices";
+import { AppDispatch } from "@/lib/store";
+import { logoutUser } from "@/lib/store/slices";
 import { Tooltip } from "@/components/ui/Tooltip/Tooltip";
 import { deleteCookies } from "@/lib/utils";
 

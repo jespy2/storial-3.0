@@ -2,8 +2,8 @@
 import { Footer } from "@/components/layout/Footer/Footer";
 import { Header } from "@/components/layout/Header/Header";
 import { useFetchBooks } from "@/hooks/useFetchBooks";
-import { AppDispatch } from "@/store";
-import { openModal } from "@/store/slices";
+import { AppDispatch } from "@/lib/store";
+import { openModal } from "@/lib/store/slices";
 import { ModalType } from "@/types";
 import Link from "next/link";
 import { useEffect } from "react";

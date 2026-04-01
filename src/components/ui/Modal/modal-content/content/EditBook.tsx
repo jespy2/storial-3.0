@@ -2,9 +2,9 @@
 import { useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 
-import { AppDispatch } from "@/store";
-import { closeModal, openNotification } from "@/store/slices";
-import { bookThunks } from "@/store/thunks";
+import { AppDispatch } from "@/lib/store";
+import { closeModal, openNotification } from "@/lib/store/slices";
+import { bookThunks } from "@/lib/store/thunks";
 import { useAppSelector, useFormInput } from "@/hooks";
 import { IBook } from "@/types";
 
