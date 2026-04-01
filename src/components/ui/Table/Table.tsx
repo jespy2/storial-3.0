@@ -1,25 +1,17 @@
-'use client'
+"use client";
 import { useAppSelector } from "@/hooks";
+import { Table as PureTable } from "./index";
 import { TableBody } from "./TableBody";
 import { TableHeader } from "./TableHeader";
 
-export const Table = () => {
-	const booksState = useAppSelector((state) => state.books);
-	const { isLoading } = booksState;
+/** Connected Table — reads Redux loading state and delegates layout to the pure <Table> shell. */
+export function Table() {
+	const { isLoading } = useAppSelector((state) => state.books);
 
 	return (
-		<div className='flex flex-col max-w-full h-3/4 overflow-x-auto rounded-md shadow-lg dark:border dark:border-slate-300 dark:shadow-md dark:shadow-slate-500'>
-				<div className="inline-block min-w-full ">
-					<div className="overflow-x-auto">
-					{isLoading && <div>Collecting your books from the shelves...</div>}
-					{!isLoading && (
-						<table className='relative min-w-full table '>
-							<TableHeader />
-							<TableBody />
-						</table>
-					)}
-					</div>
-				</div>
-		</div>
+		<PureTable isLoading={isLoading}>
+			<TableHeader />
+			<TableBody />
+		</PureTable>
 	);
-};
+}
