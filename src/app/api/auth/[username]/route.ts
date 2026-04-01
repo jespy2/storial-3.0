@@ -1,17 +1,17 @@
-import { collections, connectToDatabase } from "@/lib/db";
 import { NextRequest, NextResponse } from "next/server";
+import { findUserByUsername } from "@/lib/db/users";
 
 export async function GET(
 	_req: NextRequest,
 	{ params }: { params: { username: string } },
 ) {
 	try {
-		await connectToDatabase();
-		const user = await collections.users?.findOne({
-			username: params.username,
-		});
+		const user = await findUserByUsername(params.username);
 		if (!user)
-			return NextResponse.json({ message: "User not found" }, { status: 400 });
+			return NextResponse.json(
+				{ message: "User not found" },
+				{ status: 400 },
+			);
 		return NextResponse.json({
 			success: true,
 			message: "User found!",

@@ -1,11 +1,9 @@
-import { collections, connectToDatabase } from "@/lib/db";
-import { IBook } from "@/types";
-import { ObjectId } from "mongodb";
 import { NextRequest, NextResponse } from "next/server";
+import { IBook } from "@/types";
+import { findBooksByUsername, insertBook } from "@/lib/db/books";
 
 export async function GET(req: NextRequest) {
 	try {
-		await connectToDatabase();
 		const username = req.nextUrl.searchParams.get("username");
 		if (!username)
 			return NextResponse.json(
@@ -13,22 +11,15 @@ export async function GET(req: NextRequest) {
 				{ status: 400 },
 			);
 
-		const data = (await collections.books
-			?.find({ username })
-			.toArray()) as IBook[];
+		const data = await findBooksByUsername(username);
 
-		if (!data || data.length === 0) {
+		// New user with no books — seed one empty record so the UI has something to render
+		if (data.length === 0) {
 			const seed: IBook = {
 				username,
-				book: {
-					_id: new ObjectId().toString(),
-					title: "",
-					author: "",
-					notes: "",
-					status: "unread",
-				},
+				book: { title: "", author: "", notes: "", status: "unread" },
 			};
-			await collections.books?.insertOne(seed);
+			await insertBook(seed);
 			return NextResponse.json({ success: true, data: [seed] });
 		}
 
@@ -43,7 +34,6 @@ export async function GET(req: NextRequest) {
 
 export async function POST(req: NextRequest) {
 	try {
-		await connectToDatabase();
 		const body: IBook = await req.json();
 		if (!body)
 			return NextResponse.json(
@@ -51,7 +41,7 @@ export async function POST(req: NextRequest) {
 				{ status: 400 },
 			);
 
-		const result = await collections.books?.insertOne(body);
+		const result = await insertBook(body);
 		return NextResponse.json(
 			{ success: true, id: result?.insertedId, message: "Book created!" },
 			{ status: 201 },

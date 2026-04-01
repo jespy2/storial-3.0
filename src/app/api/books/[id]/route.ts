@@ -1,17 +1,13 @@
-import { collections, connectToDatabase } from "@/lib/db";
-import { IBook } from "@/types";
-import { ObjectId } from "mongodb";
 import { NextRequest, NextResponse } from "next/server";
+import { IBook } from "@/types";
+import { findBookById, updateBook, deleteBook } from "@/lib/db/books";
 
 export async function GET(
 	_req: NextRequest,
 	{ params }: { params: { id: string } },
 ) {
 	try {
-		await connectToDatabase();
-		const book = await collections.books?.findOne({
-			_id: new ObjectId(params.id),
-		});
+		const book = await findBookById(params.id);
 		if (!book)
 			return NextResponse.json(
 				{ success: false, error: "Book not found" },
@@ -31,12 +27,8 @@ export async function PUT(
 	{ params }: { params: { id: string } },
 ) {
 	try {
-		await connectToDatabase();
 		const body: IBook = await req.json();
-		const result = await collections.books?.updateOne(
-			{ _id: new ObjectId(params.id) },
-			{ $set: body },
-		);
+		const result = await updateBook(params.id, body);
 		if (!result?.matchedCount)
 			return NextResponse.json(
 				{ success: false, message: "Not found" },
@@ -59,10 +51,7 @@ export async function DELETE(
 	{ params }: { params: { id: string } },
 ) {
 	try {
-		await connectToDatabase();
-		const result = await collections.books?.deleteOne({
-			_id: new ObjectId(params.id),
-		});
+		const result = await deleteBook(params.id);
 		if (!result?.deletedCount)
 			return NextResponse.json(
 				{ success: false, message: "Not found" },

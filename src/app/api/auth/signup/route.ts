@@ -1,16 +1,15 @@
-import { collections, connectToDatabase } from "@/lib/db";
-import { createSecretToken } from "@/lib/token";
-import { IUser } from "@/types";
-import bcrypt from "bcryptjs";
 import { NextRequest, NextResponse } from "next/server";
+import bcrypt from "bcryptjs";
+import { IUser } from "@/types";
+import { createSecretToken } from "@/lib/token";
+import { findUserByEmail, insertUser } from "@/lib/db/users";
 
 export async function POST(req: NextRequest) {
 	try {
-		await connectToDatabase();
 		const body: IUser = await req.json();
 		const { email, username, password } = body;
 
-		const existing = await collections.users?.findOne({ email });
+		const existing = await findUserByEmail(email);
 		if (existing)
 			return NextResponse.json(
 				{ message: "User already exists" },
@@ -18,13 +17,13 @@ export async function POST(req: NextRequest) {
 			);
 
 		const hashed = await bcrypt.hash(password, 12);
-		const result = await collections.users?.insertOne({
+		const result = await insertUser({
 			email,
 			username,
 			password: hashed,
 			books: [],
 			createdAt: new Date(),
-		} as IUser);
+		});
 
 		const token = result
 			? createSecretToken(result.insertedId.toString())
