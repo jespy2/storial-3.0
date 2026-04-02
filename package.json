@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
@@ -25,15 +27,27 @@
     "tailwind-merge": "^3.5.0"
   },
   "devDependencies": {
+    "@storybook/addon-a11y": "^8.6.18",
+    "@storybook/addon-essentials": "8.6.18",
+    "@storybook/addon-interactions": "8.6.18",
+    "@storybook/addon-onboarding": "8.6.18",
+    "@storybook/blocks": "8.6.18",
+    "@storybook/experimental-nextjs-vite": "^8.6.18",
+    "@storybook/nextjs": "8.6.18",
+    "@storybook/react": "8.6.18",
+    "@storybook/test": "8.6.18",
     "@tailwindcss/postcss": "^4",
     "@types/bcryptjs": "^2.4.6",
     "@types/jsonwebtoken": "^9.0.10",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "ajv": "^8.18.0",
     "eslint": "^9",
     "eslint-config-next": "16.2.2",
+    "storybook": "8.6.18",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vite": "^8.0.3"
   }
 }
