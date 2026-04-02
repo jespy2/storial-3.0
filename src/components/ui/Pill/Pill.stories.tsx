@@ -18,7 +18,9 @@ const meta: Meta<typeof Pill> = {
 export default meta;
 type Story = StoryObj<typeof Pill>;
 
-export const Default: Story = {};
+export const Default: Story = {
+	args: { status: "unread" },
+};
 
 export const Read: Story = {
 	args: { status: "read" },

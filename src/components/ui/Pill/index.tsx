@@ -23,18 +23,24 @@ export const pillVariants = cva(
 export interface PillProps extends VariantProps<typeof pillVariants> {
 	onClick?: () => void;
 	className?: string;
+	/** Accessible name when there is no visible text (e.g. icon-only usage). */
+	"aria-label"?: string;
 }
 
-export function Pill({ status, onClick, className }: PillProps) {
+export function Pill({ status, onClick, className, "aria-label": ariaLabel }: PillProps) {
 	return (
 		<div
 			role="button"
 			tabIndex={0}
 			aria-pressed={status === "read"}
+			aria-label={ariaLabel}
 			className={cn(pillVariants({ status }), className)}
 			onClick={onClick}
 			onKeyDown={(e) => {
-				if (e.key === "Enter" || e.key === " ") onClick?.();
+				if (e.key === "Enter" || e.key === " ") {
+					e.preventDefault();
+					onClick?.();
+				}
 			}}
 		>
 			{status}

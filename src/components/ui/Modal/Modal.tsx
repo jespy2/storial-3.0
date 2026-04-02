@@ -11,17 +11,21 @@ const MODAL_TITLES: Record<string, string> = {
 	EDIT_BOOK: "Edit book",
 };
 
+const TITLE_ID = "modal-title";
+
 /** Connected Modal — reads Redux state and delegates rendering to the pure <Modal> shell. */
 export function Modal() {
 	const dispatch = useAppDispatch();
 	const { modalContentType, isOpen } = useAppSelector((state) => state.modal);
+	const handleClose = () => dispatch(closeModal());
 
 	return (
-		<PureModal isOpen={isOpen}>
+		<PureModal isOpen={isOpen} labelId={TITLE_ID} onClose={handleClose}>
 			<div className="modal-header">
 				<ModalHeader
 					title={MODAL_TITLES[modalContentType] ?? ""}
-					onClose={() => dispatch(closeModal())}
+					onClose={handleClose}
+					titleId={TITLE_ID}
 				/>
 			</div>
 			<div className="modal-body">

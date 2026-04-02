@@ -6,9 +6,11 @@ import { StorialLogo } from "@/images";
 export interface ModalHeaderProps {
 	title: string;
 	onClose: () => void;
+	/** Must match the `labelId` passed to the parent Modal so aria-labelledby resolves. */
+	titleId?: string;
 }
 
-export function ModalHeader({ title, onClose }: ModalHeaderProps) {
+export function ModalHeader({ title, onClose, titleId }: ModalHeaderProps) {
 	return (
 		<div className="modal-header-topbar">
 			<Image
@@ -17,7 +19,7 @@ export function ModalHeader({ title, onClose }: ModalHeaderProps) {
 				className="header-logo"
 				priority
 			/>
-			<h1 className="modal-header-title">{title}</h1>
+			<h1 id={titleId} className="modal-header-title">{title}</h1>
 			<button
 				className="modal-close-btn"
 				onClick={onClose}

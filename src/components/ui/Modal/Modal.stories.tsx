@@ -1,6 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Modal, variants } from "./index";
 
+const STORY_LABEL_ID = "story-modal-title";
+
 const meta: Meta<typeof Modal> = {
 	title: "UI/Modal",
 	component: Modal,
@@ -15,7 +17,16 @@ const meta: Meta<typeof Modal> = {
 	],
 	args: {
 		isOpen: true,
-		children: <p style={{ padding: "1rem" }}>Modal content goes here.</p>,
+		labelId: STORY_LABEL_ID,
+		children: (
+			<>
+				<h2 id={STORY_LABEL_ID} style={{ margin: "0 0 0.5rem", fontSize: "1.125rem", fontWeight: 600 }}>
+					Modal Title
+				</h2>
+				<p style={{ padding: "1rem" }}>Modal content goes here.</p>
+				<button type="button" style={{ marginTop: "0.5rem" }}>OK</button>
+			</>
+		),
 	},
 	argTypes: {
 		size: {
