@@ -1,3 +1,4 @@
+import { ObjectId } from "mongodb";
 import { IUser } from "@/types";
 import { collections, connectToDatabase } from "./index";
 
@@ -14,4 +15,9 @@ export async function findUserByUsername(username: string) {
 export async function insertUser(user: IUser) {
 	await connectToDatabase();
 	return collections.users?.insertOne(user);
+}
+
+export async function findUserById(id: string) {
+	await connectToDatabase();
+	return (await collections.users?.findOne({ _id: new ObjectId(id) })) ?? null;
 }

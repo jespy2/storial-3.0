@@ -22,6 +22,10 @@ export const bookSlice = createSlice({
 	initialState: initialBookState,
 	reducers: {
 		// Synchronous reducers called directly (not via thunks)
+		initBooks: (state, action: PayloadAction<IBook[]>) => {
+			state.books.data = action.payload;
+			state.books.success = true;
+		},
 		sortBooks: (state, action: PayloadAction<{ sortBy: SortItem }>) => {
 			const { sortBy } = action.payload;
 			let newSortDirection = SortDirection.ASC;
@@ -133,4 +137,4 @@ export const bookSlice = createSlice({
 });
 
 export const { reducer: bookReducer, actions: bookActions } = bookSlice;
-export const { sortBooks, toggleBookStatus } = bookActions;
+export const { initBooks, sortBooks, toggleBookStatus } = bookActions;

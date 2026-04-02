@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IAuthState } from "@/types";
 import { authThunks } from "@/lib/store/thunks";
 
@@ -24,6 +24,16 @@ export const authSlice = createSlice({
 	initialState: initialAuthState,
 	reducers: {
 		// Synchronous reducers that are called directly (not via thunks)
+		initAuth: (
+			state,
+			action: PayloadAction<{ username: string; email: string }>,
+		) => {
+			state.auth.isLoggedIn = true;
+			state.auth.isAuthenticated = true;
+			state.auth.isRegistered = true;
+			state.auth.userInfo.username = action.payload.username;
+			state.auth.userInfo.email = action.payload.email;
+		},
 		logoutUser: (state) => {
 			state.auth.isLoggedIn = false;
 			state.auth.isAuthenticated = false;
@@ -117,5 +127,10 @@ export const authSlice = createSlice({
 });
 
 export const { reducer: authReducer, actions: authActions } = authSlice;
-export const { userIsRegistered, userNotRegistered, logUserOut, logoutUser } =
-	authActions;
+export const {
+	initAuth,
+	userIsRegistered,
+	userNotRegistered,
+	logUserOut,
+	logoutUser,
+} = authActions;
