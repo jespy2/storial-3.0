@@ -1,6 +1,10 @@
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
+export const variants = {
+	size: ["sm", "lg"] as const,
+};
+
 export const backdropVariants = cva(
 	"z-10 absolute h-full w-full top-0 left-0 flex flex-col items-center justify-center bg-surface-overlay",
 );

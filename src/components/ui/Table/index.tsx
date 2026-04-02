@@ -1,6 +1,10 @@
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
+export const variants = {
+	height: ["full", "auto"] as const,
+};
+
 export const tableVariants = cva(
 	"flex flex-col max-w-full overflow-x-auto rounded-md shadow-lg dark:border dark:border-slate-300 dark:shadow-md dark:shadow-slate-500",
 	{

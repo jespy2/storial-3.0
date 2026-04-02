@@ -3,6 +3,10 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 import { StorialLogo } from "@/images";
 
+export const variants = {
+	size: ["sm", "md", "lg"] as const,
+};
+
 export const spinnerVariants = cva(
 	// Controls the outer container that sizes the ring
 	"relative m-auto",

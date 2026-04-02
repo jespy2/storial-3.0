@@ -2,6 +2,11 @@
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
+export const variants = {
+	variant: ["primary", "secondary", "ghost", "danger"] as const,
+	size: ["sm", "md", "lg"] as const,
+};
+
 export const buttonVariants = cva(
 	// Base: visual-only styles — no layout (width, margin) so callers control placement
 	"inline-flex items-center justify-center rounded-md font-extrabold uppercase shadow-lg transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand disabled:opacity-50 disabled:pointer-events-none",
