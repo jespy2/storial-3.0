@@ -47,6 +47,8 @@ export enum SortDirection {
 	NONE = "none",
 }
 
+export type BookStatus = IBook['book']['status'];
+
 export interface IBookState {
 	books: {
 		success: boolean;
@@ -56,6 +58,8 @@ export interface IBookState {
 			sortDirection: SortDirection;
 		};
 	};
+	searchQuery: string;
+	activeStatusFilters: BookStatus[];
 	isLoading: boolean;
 	isError: boolean;
 }

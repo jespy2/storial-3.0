@@ -5,12 +5,13 @@ import { PencilIcon, TrashIcon } from "@heroicons/react/24/solid";
 import { Pill } from "@/components/ui/Pill";
 import { useAppDispatch, useAppSelector } from "@/lib/store/hooks";
 import { openAlert, openModal, openNotification } from "@/lib/store/slices";
+import { selectFilteredBooks } from "@/lib/store/selectors/books";
 import { bookThunks } from "@/lib/store/thunks";
 import { IBook, ModalType } from "@/types";
 
 export function TableBody() {
 	const dispatch = useAppDispatch();
-	const books = useAppSelector((state) => state.books.books.data);
+	const books = useAppSelector(selectFilteredBooks);
 
 	const handleStatusChange = async (book: IBook) => {
 		if (!book._id) return;

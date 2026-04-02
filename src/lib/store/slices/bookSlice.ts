@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IBook, IBookState, SortDirection, SortItem } from "@/types";
+import { BookStatus, IBook, IBookState, SortDirection, SortItem } from "@/types";
 import { bookThunks } from "@/lib/store/thunks";
 
 const { insertBook, getAllBooks, updateBookById, deleteBookById } = bookThunks;
@@ -13,6 +13,8 @@ const initialBookState: IBookState = {
 			sortDirection: SortDirection.NONE,
 		},
 	},
+	searchQuery: "",
+	activeStatusFilters: [],
 	isLoading: false,
 	isError: false,
 };
@@ -49,6 +51,18 @@ export const bookSlice = createSlice({
 			state.books.sortInfo.sortBy = sortBy;
 			state.books.sortInfo.sortDirection = newSortDirection;
 			state.books.data = sortedBooks;
+		},
+		setSearchQuery: (state, action: PayloadAction<string>) => {
+			state.searchQuery = action.payload;
+		},
+		toggleStatusFilter: (state, action: PayloadAction<BookStatus>) => {
+			const status = action.payload;
+			const idx = state.activeStatusFilters.indexOf(status);
+			if (idx === -1) {
+				state.activeStatusFilters.push(status);
+			} else {
+				state.activeStatusFilters.splice(idx, 1);
+			}
 		},
 		toggleBookStatus: (state, action: PayloadAction<{ id: string }>) => {
 			const index = state.books.data.findIndex(
@@ -137,4 +151,4 @@ export const bookSlice = createSlice({
 });
 
 export const { reducer: bookReducer, actions: bookActions } = bookSlice;
-export const { initBooks, sortBooks, toggleBookStatus } = bookActions;
+export const { initBooks, sortBooks, toggleBookStatus, setSearchQuery, toggleStatusFilter } = bookActions;
