@@ -10,8 +10,8 @@ export const pillVariants = cva(
 	{
 		variants: {
 			status: {
-				read: "bg-brand-light border-brand text-white",
-				unread: "bg-white border-brand-light text-brand-light",
+				read: "bg-blue-300 border-blue-500 text-white",
+				unread: "bg-blue-50 dark:bg-gray-700 border-blue-300 text-blue-500 dark:text-blue-300",
 			},
 		},
 		defaultVariants: {

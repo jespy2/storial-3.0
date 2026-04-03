@@ -3,10 +3,11 @@ import { findUserByUsername } from "@/lib/db/users";
 
 export async function GET(
 	_req: NextRequest,
-	{ params }: { params: { username: string } },
+	{ params }: { params: Promise<{ username: string }> },
 ) {
+	const { username } = await params;
 	try {
-		const user = await findUserByUsername(params.username);
+		const user = await findUserByUsername(username);
 		if (!user)
 			return NextResponse.json(
 				{ message: "User not found" },

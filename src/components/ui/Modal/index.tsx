@@ -8,11 +8,11 @@ export const variants = {
 };
 
 export const backdropVariants = cva(
-	"z-10 absolute h-full w-full top-0 left-0 flex flex-col items-center justify-center bg-surface-overlay",
+	"z-10 absolute h-full w-full top-0 left-0 flex flex-col items-center justify-center bg-gray-500/75",
 );
 
 export const modalVariants = cva(
-	"z-20 h-fit flex flex-col items-center justify-center p-4 border-2 border-brand rounded-md bg-surface-base shadow-lg dark:bg-surface-dark",
+	"z-20 h-fit flex flex-col items-center justify-center p-4 border-2 border-blue-500 rounded-md bg-slate-50 dark:bg-gray-800 shadow-lg",
 	{
 		variants: {
 			size: {

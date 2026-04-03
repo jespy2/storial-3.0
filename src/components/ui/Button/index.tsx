@@ -9,15 +9,15 @@ export const variants = {
 
 export const buttonVariants = cva(
 	// Base: visual-only styles — no layout (width, margin) so callers control placement
-	"inline-flex items-center justify-center rounded-md font-extrabold uppercase shadow-lg transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand disabled:opacity-50 disabled:pointer-events-none",
+	"inline-flex items-center justify-center rounded-md font-extrabold uppercase shadow-lg transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none",
 	{
 		variants: {
 			variant: {
-				primary: "bg-brand text-white hover:bg-neutral",
+				primary: "bg-blue-500 text-white hover:bg-gray-400",
 				secondary:
-					"border-2 border-brand bg-transparent text-brand hover:bg-brand hover:text-white",
-				ghost: "border border-neutral bg-transparent text-neutral hover:bg-neutral/10",
-				danger: "bg-danger text-white hover:bg-danger-hover",
+					"border-2 border-blue-500 bg-transparent text-blue-500 hover:bg-blue-500 hover:text-white",
+				ghost: "border border-gray-400 bg-transparent text-gray-400 hover:bg-gray-400/10",
+				danger: "bg-red-500 text-white hover:bg-red-400",
 			},
 			size: {
 				sm: "text-xs px-2 py-1.5",
