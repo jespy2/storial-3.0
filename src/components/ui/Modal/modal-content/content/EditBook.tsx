@@ -40,7 +40,7 @@ export const EditBook = () => {
       },
     };
 
-    await dispatch(bookThunks.updateBookById(payload)).then(() => {
+    await dispatch(bookThunks.updateBookById(payload as IBook & { _id: string })).then(() => {
       dispatch(openNotification({ message: `${payload.book.title} has been updated` }));
       dispatch(closeModal());
     });
