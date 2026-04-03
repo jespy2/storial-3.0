@@ -17,6 +17,8 @@ export const Header = ({ title }: { title: string }) => {
 				<Image
 					src={StorialLogo}
 					alt='Storial Logo'
+					width={200}
+					height={150}
 					className='header-logo'
 					priority
 				/>

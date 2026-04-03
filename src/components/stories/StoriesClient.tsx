@@ -36,21 +36,23 @@ export function StoriesClient({
 	}, [dispatch, username, email, initialBooks]);
 
 	return (
-		<div className="page-container">
-			<Header title="My Library" />
-			<main className="main-content">
-				<div className="table-actions">
-					<Button
-						variant="primary"
-						onClick={() =>
-							dispatch(openModal({ type: ModalType.ADD_BOOK }))
-						}
-					>
-						Add Book
-					</Button>
-				</div>
-				<Table />
-			</main>
+		<div className="relative page-container">
+			<div className="flex flex-col items-center w-full">
+				<Header title="My Library" />
+				<main className="main-content">
+					<div className="table-actions">
+						<Button
+							variant="primary"
+							onClick={() =>
+								dispatch(openModal({ type: ModalType.ADD_BOOK }))
+							}
+						>
+							Add Book
+						</Button>
+					</div>
+					<Table />
+				</main>
+			</div>
 			<Modal />
 			{isAlertOpen && <Alert />}
 			{isNotificationOpen && <Notification />}

@@ -1,5 +1,7 @@
-@reference "tailwindcss";
 @import "tailwindcss";
+
+/* Use class-based dark mode — ModeToggle adds/removes .dark on <html> */
+@custom-variant dark (&:is(.dark *));
 
 @theme {
 	--animate-slide-in: slide-in 0.5s ease-out;
@@ -91,9 +93,16 @@
 	@apply h-8 w-8 text-blue-500 hover:text-gray-400;
 }
 
+.logout {
+	@apply absolute top-5 right-5;
+}
+
+.logout-btn {
+	@apply cursor-pointer;
+}
+
 .logout-icon {
-	@apply absolute top-5 right-8 cursor-pointer
-  h-8 w-8 text-blue-500 hover:text-gray-400;
+	@apply h-8 w-8 text-blue-500 hover:text-gray-400;
 }
 
 /* FOOTER COMPONENT */
